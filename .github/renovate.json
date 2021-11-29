@@ -8,7 +8,7 @@
   "regexManagers": [
     {
       "fileMatch": [
-        "^Dockerfile$"
+        "build/container/Dockerfile$"
       ],
       "datasourceTemplate": "docker",
       "matchStrings": [
