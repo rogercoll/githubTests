@@ -12,8 +12,18 @@
       ],
       "datasourceTemplate": "docker",
       "matchStrings": [
-        "base_image=(?<depName>.+):(?<currentValue>.+)",
-        "ca_certificates=(?<currentValue>.+)"
+        "base_image=(?<depName>.+):(?<currentValue>.+)"
+      ]
+    },
+    {
+      "fileMatch": [
+        "build/container/Dockerfile$"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "apk",
+      "matchStrings": [
+        "ca_certificates=(?<currentValue>.+)",
+        "tini=(?<currentValue>.*?)"
       ]
     }
   ]
