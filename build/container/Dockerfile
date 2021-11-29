@@ -1,4 +1,4 @@
-FROM alpine:3.14 AS core
+FROM alpine:3.15.0 AS core
 
 ARG image_version=0.0
 ARG agent_version=0.0
