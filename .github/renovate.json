@@ -12,7 +12,8 @@
       ],
       "datasourceTemplate": "docker",
       "matchStrings": [
-        "base_image=(?<depName>.+):(?<currentValue>.+)"
+        "base_image=(?<depName>.+):(?<currentValue>.+)",
+        "ca_certificates=(?<currentValue>.+)"
       ]
     }
   ]
