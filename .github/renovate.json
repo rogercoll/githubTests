@@ -12,7 +12,7 @@
       ],
       "datasourceTemplate": "docker",
       "matchStrings": [
-        "BASE_IMAGE=(?<depName>.+):(?<currentValue>.+)"
+        "base_image=(?<depName>.+):(?<currentValue>.+)"
       ]
     }
   ]
