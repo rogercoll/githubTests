@@ -6,4 +6,4 @@ updates:
     directory: "build/container"
     # Check for updates once a week
     schedule:
-      interval: "hourly"
+      interval: "daily"
