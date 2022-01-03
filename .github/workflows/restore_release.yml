@@ -1,20 +1,18 @@
-name: Manually triggered workflow
+name: Release from a working version
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
+      working_version:
+        description: 'Tag to backup assets and docker image from'
         required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
+      new_version:
+        description: 'New release version'
         required: false
-        default: 'The Octoverse'
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!"
+          echo "Backup version ${{ github.event.inputs.working_version }}!\n"
+          echo "New release version ${{ github.event.inputs.working_version }}!"
