@@ -1,0 +1,24 @@
+name: Prerelease Linux pipeline
+
+on:
+  release:
+    types:
+      - prereleased
+    tags:
+      - '*'
+
+jobs:
+  publish-packaging:
+    name: Publish build packages to assets
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: echo ${{ github.sha }} > Release-${{ github.event.release.tag_name }}.txt
+      - name: Test
+        run: cat Release-${{ github.event.release.tag_name }}.txt
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: Release-${{ github.event.release.tag_name }}.txt
