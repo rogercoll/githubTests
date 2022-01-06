@@ -36,6 +36,22 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - run: | 
-          gh release download ${{ github.event.inputs.working_version }}
+      - uses: robinraju/release-downloader@v1.3
+        with: 
+          repository: rogercoll/githubTests
+          tag: ${{ github.event.inputs.working_version }}
+          # The name of the file to download.
+          # Use this field only to specify filenames other than tarball or zipball, if any.
+          # Use '*' to download all assets
+          fileName: "*"
+      - name: Rename files
+        run: |
           ls -al
+          rename 's/${{ github.event.inputs.working_version }}/${{ github.event.inputs.new_version }}/g' *
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: | 
+            Release-amd64-${{ github.event.inputs.new_version }}.txt
+            Release-arm64-${{ github.event.inputs.new_version }}.txt
