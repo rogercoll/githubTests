@@ -20,15 +20,22 @@ jobs:
       - run: |
           echo "Backup version ${{ github.event.inputs.working_version }}!\n"
           echo "New release version ${{ github.event.inputs.new_version }}!"
-  publish-docker-iamges:
+          # publish-docker-iamges:
+    #    runs-on: ubuntu-20.04
+    #    steps:
+    #  - name: Login to DockerHub
+    #    uses: docker/login-action@v1
+    #    with:
+    #      username: ${{ env.DOCKER_HUB_ID }}
+    #      password: ${{ env.DOCKER_HUB_PASSWORD }}
+    #  - name: Setup crane
+    #    uses: imjasonh/setup-crane@v0.1
+    #  - name: Publish new latest image from tag
+    #    run: crane tag coll97/s3sidecar:${{ github.event.inputs.working_version }} ${{ github.event.inputs.new_version }} 
+  publish-old-assets:
     runs-on: ubuntu-20.04
     steps:
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ env.DOCKER_HUB_ID }}
-          password: ${{ env.DOCKER_HUB_PASSWORD }}
-      - name: Setup crane
-        uses: imjasonh/setup-crane@v0.1
-      - name: Publish new latest image from tag
-        run: crane tag coll97/s3sidecar:${{ github.event.inputs.working_version }} ${{ github.event.inputs.new_version }} 
+      - uses: actions/checkout@v2
+      - run: | 
+          gh release download ${{ github.event.inputs.working_version }}
+          ls -al
