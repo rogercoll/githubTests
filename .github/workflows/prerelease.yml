@@ -14,7 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: echo ${{ github.sha }} > Release-${{ github.event.release.tag_name }}.txt
+        run: |
+          echo ${{ github.sha }} > Release-amd64-${{ github.event.release.tag_name }}.txt
+          echo ${{ github.sha }} > Release-arm64-${{ github.event.release.tag_name }}.txt
       - name: Test
         run: | 
           cat Release-amd64-${{ github.event.release.tag_name }}.txt
