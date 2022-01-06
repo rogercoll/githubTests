@@ -12,6 +12,7 @@ on:
 env:
   DOCKER_HUB_ID: ${{ secrets.DOCKER_HUB_ID }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+  GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
 jobs:
   say_hello:
@@ -33,21 +34,24 @@ jobs:
     #  - name: Publish new latest image from tag
     #    run: crane tag coll97/s3sidecar:${{ github.event.inputs.working_version }} ${{ github.event.inputs.new_version }} 
   publish-old-assets:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: robinraju/release-downloader@v1.3
-        with: 
-          repository: rogercoll/githubTests
-          tag: ${{ github.event.inputs.working_version }}
-          # The name of the file to download.
-          # Use this field only to specify filenames other than tarball or zipball, if any.
-          # Use '*' to download all assets
-          fileName: "*"
+      - name: List Releases
+        run: | 
+          gh release list --repo rogercoll/githubTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: download assets 
+        run:  |
+          mkdir dist
+          gh release download ${{ github.event.inputs.working_version }} --repo rogercoll/githubTests -D ./dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Rename files
         run: |
           ls -al
-          rename 's/${{ github.event.inputs.working_version }}/${{ github.event.inputs.new_version }}/g' *
+          find ./dist -name '*${{ github.event.inputs.working_version }}*' -exec bash -c ' mv $0 ${0/${{ github.event.inputs.working_version }}/${{ github.event.inputs.new_version }}}' {} \;
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
