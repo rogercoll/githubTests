@@ -18,26 +18,14 @@
       ]
     },
     {
-      // Parse version of nri-winservices embedded integration.
-      "fileMatch": [
-        "build/embed/integrations.version$"
-      ],
-      "depNameTemplate": "newrelic/{{{integrationName}}}",
-      "datasourceTemplate": "github-tags", // Version info is fetched from GitHub.
-      "matchStrings": [
-        "(?<integrationName>.+),(?<currentValue>v.+)",
-      ]
-    },
-    {
-      // Parse version of embedded integrations (nri-docker, nri-flex and nri-prometheus).
+      // Parse version of embedded integrations.
       "fileMatch": [
         "build/embed/integrations.version$"
       ],
       "depNameTemplate": "newrelic/{{{integrationName}}}",
       "datasourceTemplate": "github-releases", // Version info is fetched from GitHub.
-      "extractVersionTemplate": "v{{{currentValue}}}", // Removes the prefix 'v' from a version.
       "matchStrings": [
-        "(?<integrationName>.+),(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+        "(?<integrationName>.+),(?<currentValue>v.+)",
       ]
     }
   ]
