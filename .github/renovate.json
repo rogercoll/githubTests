@@ -23,7 +23,7 @@
         "build/embed/integrations.version$"
       ],
       "depNameTemplate": "newrelic/{{{integrationName}}}",
-      "datasourceTemplate": "github-releases", // Version info is fetched from GitHub.
+      "datasourceTemplate": "github-tags", // Version info is fetched from GitHub.
       "matchStrings": [
         "(?<integrationName>.+),(?<currentValue>v.+)",
       ]
@@ -35,7 +35,7 @@
       ],
       "depNameTemplate": "newrelic/{{{integrationName}}}",
       "datasourceTemplate": "github-releases", // Version info is fetched from GitHub.
-      "extractVersionTemplate": "^v-(?<version>.*)$", // Removes the prefix 'v' from a version.
+      "extractVersionTemplate": "v{{{currentValue}}}", // Removes the prefix 'v' from a version.
       "matchStrings": [
         "(?<integrationName>.+),(?<currentValue>\\d+\\.\\d+\\.\\d+)"
       ]
