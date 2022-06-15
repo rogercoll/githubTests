@@ -37,7 +37,7 @@
       "datasourceTemplate": "github-releases", // Version info is fetched from GitHub.
       "extractVersionTemplate": "^v-(?<version>.*)$", // Removes the prefix 'v' from a version.
       "matchStrings": [
-        "^(?<integrationName>.+),(?<currentValue>\\d+\\.\\d+\\.\\d+)$"
+        "(?<integrationName>.+),(?<currentValue>\\d+\\.\\d+\\.\\d+)"
       ]
     }
   ]
