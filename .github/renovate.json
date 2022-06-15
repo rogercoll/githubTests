@@ -1,6 +1,6 @@
 {
   "extends": [
-    "config:base",
+    "config:base"
   ],
   "enabledManagers": [
     // Enable only the regex manager (for Dockerfile base image bumping).
@@ -25,7 +25,7 @@
       "depNameTemplate": "newrelic/{{{integrationName}}}",
       "datasourceTemplate": "github-releases", // Version info is fetched from GitHub.
       "matchStrings": [
-        "(?<integrationName>.+),(?<currentValue>v.+)",
+        "(?<integrationName>.+),(?<currentValue>v.+)"
       ]
     }
   ]
