@@ -2,6 +2,8 @@
   "extends": [
     "config:base"
   ],
+    // Label PRs with `dependencies`.
+  "labels": ["dependencies"],
   "enabledManagers": [
     // Enable only the regex manager (for Dockerfile base image bumping).
     "regex"
