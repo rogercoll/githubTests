@@ -1,0 +1,49 @@
+name: 🚀 🛠 Test pre-release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to test'
+        required: true
+      canaries:
+        description: 'Should run canaries?'
+        type: boolean
+        required: true
+      linux:
+        description: 'Should run Linux platform tests?'
+        type: boolean
+        default: true
+        required: false
+      windows:
+        description: 'Should run Windows platform tests?'
+        type: boolean
+        default: true
+        required: false
+
+jobs:
+  test-prerelease-windows:
+    if: ${{ github.event.inputs.windows == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: echo
+        run: |
+          echo "this is the windows job" 
+
+  test-prerelease-linux:
+    if: ${{ github.event.inputs.linux == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: echo
+        run: |
+          echo "this is the Linux job" 
+  launch-macos:
+    needs: [test-prerelease-windows, test-prerelease-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: echo
+        run: |
+          echo "this is the macos job" 
