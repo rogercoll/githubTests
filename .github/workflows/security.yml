@@ -31,7 +31,7 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "text": "Deployment started (In Progress)",
+              "text": "@here Deployment started (In Progress)",
               "attachments": [
                 {
                   "pretext": "Deployment started",
