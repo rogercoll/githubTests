@@ -31,20 +31,7 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "text": ":star::star::star::star: Vulnerabilities found!",
-              "attachments": [
-                {
-                  "pretext": "Deployment started",
-                  "color": "dbab09",
-                  "fields": [
-                    {
-                      "title": "Status",
-                      "short": true,
-                      "value": "In Progress"
-                    }
-                  ]
-                }
-              ]
+              "text": ":rotating_light: Vulnerabilities found, see: https://github.com/newrelic/infrastructure-agent/security/code-scanning?query=is%3Aopen+branch%3Amaster+tool%3ATrivy :rotating_light:"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
