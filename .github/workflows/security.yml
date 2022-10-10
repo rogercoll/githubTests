@@ -31,7 +31,7 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "text": "@here Deployment started (In Progress)",
+              "text": ":star::star::star::star: Vulnerabilities found!",
               "attachments": [
                 {
                   "pretext": "Deployment started",
