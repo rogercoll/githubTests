@@ -11,7 +11,7 @@ jobs:
       with:
         payload: |
           {
-            "text": "Danny Torrence left a 1 star review for your property.",
+            "text": ":star::star::star::star: Danny Torrence left a 1 star review for your property.",
             "blocks": [
               {
                 "type": "section",
