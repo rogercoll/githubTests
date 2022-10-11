@@ -1,0 +1,20 @@
+name: 🕵 Testing
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to scan'
+        required: true
+jobs:
+  parse-tag:
+    name: Transform semantic version tag
+    runs-on: ubuntu-20.04
+    outputs:
+      tag: ${{ steps.set_outputs.outputs.test-result }}
+    steps:
+      - name: Print the value of the release tag
+        run: echo "TAG_NAME = ${{ github.event.input.tag }}"
+      - name: Remove v from semantic version tag
+        run: echo "::set-env name=TAG::${{ github.event.input.tag }:1}"
+      - name: Print new value of env variable
+        run: echo "TAG = $TAG"
