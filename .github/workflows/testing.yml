@@ -15,6 +15,8 @@ jobs:
       - name: Print the value of the release tag
         run: echo "TAG_NAME = ${{ github.event.input.tag }}"
       - name: Remove v from semantic version tag
-        run: echo "::set-env name=TAG::${{ github.event.input.tag }:1}"
+        run: |
+          echo "::set-env name=TAG::${{ github.event.input.tag }}"
+          echo "::set-env name=TAG::${TAG:1}"
       - name: Print new value of env variable
         run: echo "TAG = $TAG"
