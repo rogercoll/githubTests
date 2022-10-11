@@ -13,10 +13,15 @@ jobs:
       tag: ${{ steps.set_outputs.outputs.test-result }}
     steps:
       - name: Print the value of the release tag
-        run: echo "TAG_NAME = ${{ github.event.input.tag }}"
-      - name: Remove v from semantic version tag
-        run: |
-          echo "::set-env name=TAG::${{ github.event.input.tag }}"
-          echo "::set-env name=TAG::${TAG:1}"
+        run: echo "${{ github.event.inputs.tag }}"
+      - name: Set the value of the release tag
+        run: echo "tag=$(echo ${{ github.event.inputs.tag }} | cut -c2-)" >> $GITHUB_ENV
       - name: Print new value of env variable
-        run: echo "TAG = $TAG"
+        run: echo "${{ env.tag }}"
+  do-release:
+    needs: [parse-tag]
+    name: Print previously set env
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Print the value of the release tag
+        run: echo "${{ env.tag }}"
