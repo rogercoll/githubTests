@@ -10,7 +10,7 @@ jobs:
     name: Transform semantic version tag
     runs-on: ubuntu-20.04
     outputs:
-      tag: ${{ steps.set_outputs.outputs.test-result }}
+      tag: ${{ steps.set-output.outputs.tag }}
     steps:
       - name: Print the value of the release tag
         run: echo "${{ github.event.inputs.tag }}"
@@ -18,10 +18,12 @@ jobs:
         run: echo "tag=$(echo ${{ github.event.inputs.tag }} | cut -c2-)" >> $GITHUB_ENV
       - name: Print new value of env variable
         run: echo "${{ env.tag }}"
+      - id: set-output
+        run: echo "::set-output name=tag::${{ env.tag }}"
   do-release:
     needs: [parse-tag]
     name: Print previously set env
     runs-on: ubuntu-20.04
     steps:
       - name: Print the value of the release tag
-        run: echo "${{ env.tag }}"
+        run: echo "${{ needs.parse-tag.outputs.tag }}"
