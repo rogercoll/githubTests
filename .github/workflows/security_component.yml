@@ -1,0 +1,34 @@
+name: Security Scan
+
+on:
+  workflow_call:
+    secrets:
+      slack_webhook:
+        required: false
+
+jobs:
+  # Note: Snyk SaaS is already configured for this repository, which does not need a workflow to run
+  trivy:
+    name: Trivy security scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        if: ${{ github.event.schedule }} # Do not run inline checks when running periodically
+        with:
+          image-ref: "newrelic/infrastructure"
+          ignore-unfixed: true
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.22.0
+        with:
+          # This data can be any valid JSON from a previous step in the GitHub Action
+          payload: |
+            {
+              "text": ":rotating_light: Vulnerabilities found, see: https://github.com/newrelic/infrastructure-agent/security/code-scanning?query=is%3Aopen+branch%3Amaster+tool%3ATrivy :rotating_light:"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook }}
