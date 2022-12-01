@@ -1,0 +1,16 @@
+name: 🕵 Testing
+on:
+  push:
+    branches:
+      - main
+jobs:
+  windows-date:
+    name: Get date RFC3339 format
+    runs-on: windows-2019
+    steps:
+      - name: Print date
+        run: date
+      - name: Print UTC date
+        run: date -u
+      - name: Print date in RCF3339 format
+        run: date -u +"%Y-%m-%dT%H:%M:%SZ"
