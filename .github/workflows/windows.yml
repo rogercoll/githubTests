@@ -12,5 +12,9 @@ jobs:
         run: date
       - name: Print UTC date
         run: date -u
-      - name: Print date in RCF3339 format
+      - name: Print date in RCF3339 format using bash
+        shell: bash
+        run: date -u +"%Y-%m-%dT%H:%M:%SZ"
+      - name: Print date in RCF3339 format using pwsh
+        shell: pwsh
         run: date -u +"%Y-%m-%dT%H:%M:%SZ"
