@@ -18,3 +18,8 @@ jobs:
       - name: Print date in RCF3339 format using pwsh
         shell: pwsh
         run: date -u +"%Y-%m-%dT%H:%M:%SZ"
+      - name: Set the value of the registered date
+        run: echo buildDate=$(date -u +"%Y-%m-%dT%H:%M:%SZ") >> $GITHUB_ENV
+        shell: bash
+      - name: Print new value of env variable
+        run: echo "${{ env.buildDate }}"
