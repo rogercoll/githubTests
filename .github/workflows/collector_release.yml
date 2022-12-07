@@ -6,13 +6,14 @@ on:
       - main
 
 jobs:
-  createFile:
-    name: Create A File
+  buildOtel:
+    name: Build otelcol using builder
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ls -al build/
       - uses: rogercoll/otelcol-builder-action@main
         with:
-          manifest: './distributions/otelcol/manifest.yaml'
-          outputpath: './build'
+          local_manifest: './distributions/otelcol/manifest.yaml'
+          local_output_path: './build'
       - run: ls -al build/
