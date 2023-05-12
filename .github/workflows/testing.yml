@@ -27,3 +27,8 @@ jobs:
     steps:
       - name: Print the value of the release tag
         run: echo "${{ needs.parse-tag.outputs.tag }}"
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run My Custom Action
+        uses: ./.github/workflows/component_myaction.yml
