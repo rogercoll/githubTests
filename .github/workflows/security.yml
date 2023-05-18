@@ -20,4 +20,4 @@ jobs:
     secrets:
       slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
     with:
-      tag: "${{ inputs.tag }}"
+      tag: "${{ inputs.tag || '1.41.0' }}"
