@@ -30,5 +30,7 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
       - name: Run My Custom Action
         uses: ./.github/workflows/component_myaction.yml

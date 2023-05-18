@@ -6,6 +6,10 @@ on:
       - main
   pull_request:
   workflow_dispatch:
+    inputs:
+      tag:
+        required: false
+        default: '0.0.1-rc'
   schedule:
     - cron: "5 0 * 8 *"
 
@@ -15,3 +19,5 @@ jobs:
     uses: ./.github/workflows/security_component.yml
     secrets:
       slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+    with:
+      tag: "${{ inputs.tag }}"
