@@ -5,6 +5,6 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 argument = sys.argv[1]
-argument = argument.replace("\\", "/")
+argument = argument.replace('\\', '/')
 
 print(argument)

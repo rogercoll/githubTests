@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run bash script
-        run: bash.exe ./say_hello.sh "C://hello//widowns//file-path"
+        run: bash.exe ./say_hello.sh "C:\\hello\\widowns\\file-path"
       - name: Run python script
-        run: python.exe ./say_hello.py "C://hello//widowns//file-path"
+        run: python.exe ./say_hello.py "C:\\hello\\widowns\\file-path"
       - name: Print date
         run: date
       - name: Print UTC date
