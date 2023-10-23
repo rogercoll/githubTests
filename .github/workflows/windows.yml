@@ -6,8 +6,11 @@ on:
 jobs:
   windows-date:
     name: Get date RFC3339 format
-    runs-on: windows-2019
+    runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: Run bash script
+        run: bash.exe ./say_hello.sh
       - name: Print date
         run: date
       - name: Print UTC date
