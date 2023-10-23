@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run bash script
-        run: bash.exe ./say_hello.sh
+        run: bash.exe ./say_hello.sh "C://hello//widowns//file-path"
       - name: Print date
         run: date
       - name: Print UTC date

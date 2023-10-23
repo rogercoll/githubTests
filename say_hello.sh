@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
-echo "stdout line"
-echo "error line" 1>&2
-echo "${PREFIX}-$1"
+Argument="$1"  # Pass the variable as a command-line argument
+
+Argument=${Argument//\\//}
+
+echo "$Argument"  # Output the modified variable
