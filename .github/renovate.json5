@@ -17,7 +17,8 @@
       ],
       "datasourceTemplate": "docker",
       "matchStrings": [
-        "IMAGE=(?<depName>.+):(?<currentValue>.+)"
+        "IMAGE=(?<depName>.+):(?<currentValue>.+)",
+        "OPENSEARCH_IMAGE=(?<depName>.+):(?<currentValue>.+)"
       ]
     },
     {
