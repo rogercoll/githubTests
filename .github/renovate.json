@@ -8,6 +8,13 @@
     // Enable only the regex manager (for Dockerfile base image bumping).
     "regex"
   ],
+
+  "packageRules": [
+    {
+      "matchFileNames": [".env"],
+      "groupName": "deps",
+    },
+  ],
   "regexManagers": [
     {
       // Parse bundle image version from `base_image` ARG in Dockerfile.
