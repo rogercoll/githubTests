@@ -9,14 +9,17 @@
     "regex"
   ],
 
-  "packageRules": [
-    {
-      "matchFileNames": [".env"],
-      "groupName": "deps",
-      "datasourceTemplate": "docker",
-    },
-  ],
   "regexManagers": [
+    {
+      // Parse bundle image version from `base_image` ARG in Dockerfile.
+      "fileMatch": [
+        ".env$"
+      ],
+      "datasourceTemplate": "docker",
+      "matchStrings": [
+        "IMAGE=(?<depName>.+):(?<currentValue>.+)"
+      ]
+    },
     {
       // Parse bundle image version from `base_image` ARG in Dockerfile.
       "fileMatch": [
