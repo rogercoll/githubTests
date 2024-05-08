@@ -13,6 +13,7 @@
     {
       "matchFileNames": [".env"],
       "groupName": "deps",
+      "datasourceTemplate": "docker",
     },
   ],
   "regexManagers": [
