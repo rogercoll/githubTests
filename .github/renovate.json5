@@ -11,14 +11,22 @@
 
   "regexManagers": [
     {
-      // Parse bundle image version from `base_image` ARG in Dockerfile.
       "fileMatch": [
         ".env$"
       ],
       "datasourceTemplate": "docker",
       "matchStrings": [
-        "IMAGE=(?<depName>.+):(?<currentValue>.+)",
-        "OPENSEARCH_IMAGE=(?<depName>.+):(?<currentValue>.+)"
+        "IMAGE=(?<depName>.+):(?<currentValue>.+)"
+      ]
+    },
+    {
+      "fileMatch": [
+        "build/Dockerfile$"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "kubeshop/tracetest",
+      "matchStrings": [
+        "IMAGE_VERSION=(?<currentValue>.+)"
       ]
     },
     {
