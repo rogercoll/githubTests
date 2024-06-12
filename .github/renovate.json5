@@ -30,6 +30,16 @@
       ]
     },
     {
+      "fileMatch": [
+        "build/opensearch.yaml$"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "opensearchproject/opensearch",
+      "matchStrings": [
+        "version: (?<currentValue>.+)"
+      ]
+    },
+    {
       // Parse bundle image version from `base_image` ARG in Dockerfile.
       "fileMatch": [
         "build/container/Dockerfile$"
