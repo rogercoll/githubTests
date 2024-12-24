@@ -10,7 +10,7 @@
   ],
   "packageRules": [{
     "matchManagers": ["regex"],
-    "matchPackagePatterns": ["open-telemetry"],
+    // "matchPackagePatterns": ["open-telemetry"],
     "groupName": "otelcol"
   }],
   customManagers: [
