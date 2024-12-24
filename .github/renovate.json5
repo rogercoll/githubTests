@@ -1,73 +1,76 @@
 {
-  "extends": [
-    "config:base"
+  extends: [
+    'config:recommended',
   ],
-    // Label PRs with `dependencies`.
-  "labels": ["dependencies"],
-  "enabledManagers": [
-    // Enable only the regex manager (for Dockerfile base image bumping).
-    "regex"
+  labels: [
+    'dependencies',
   ],
-
-  "regexManagers": [
+  enabledManagers: [
+    'custom.regex',
+  ],
+  customManagers: [
     {
-      "fileMatch": [
-        ".env$"
+      customType: 'regex',
+      fileMatch: [
+        '.env$',
       ],
-      "datasourceTemplate": "docker",
-      "matchStrings": [
-        "IMAGE=(?<depName>.+):(?<currentValue>.+)"
-      ]
+      datasourceTemplate: 'docker',
+      matchStrings: [
+        'IMAGE=(?<depName>.+):(?<currentValue>.+)',
+      ],
     },
     {
-      "fileMatch": [
-        "build/Dockerfile$"
+      customType: 'regex',
+      fileMatch: [
+        'build/Dockerfile$',
       ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "kubeshop/tracetest",
-      "matchStrings": [
-        "IMAGE_VERSION=(?<currentValue>.+)"
-      ]
+      datasourceTemplate: 'docker',
+      depNameTemplate: 'kubeshop/tracetest',
+      matchStrings: [
+        'IMAGE_VERSION=(?<currentValue>.+)',
+      ],
     },
     {
-      "fileMatch": [
-        "build/opensearch.yaml$"
+      customType: 'regex',
+      fileMatch: [
+        'build/opensearch.yaml$',
       ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "opensearchproject/opensearch",
-      "matchStrings": [
-        "version: (?<currentValue>.+)"
-      ]
+      datasourceTemplate: 'docker',
+      depNameTemplate: 'opensearchproject/opensearch',
+      matchStrings: [
+        'version: (?<currentValue>.+)',
+      ],
     },
     {
-      // Parse bundle image version from `base_image` ARG in Dockerfile.
-      "fileMatch": [
-        "build/container/Dockerfile$"
+      customType: 'regex',
+      fileMatch: [
+        'build/container/Dockerfile$',
       ],
-      "datasourceTemplate": "docker",
-      "matchStrings": [
-        "base_image=(?<depName>.+):(?<currentValue>.+)"
-      ]
+      datasourceTemplate: 'docker',
+      matchStrings: [
+        'base_image=(?<depName>.+):(?<currentValue>.+)',
+      ],
     },
     {
-      // Parse version of embedded integrations.
-      "fileMatch": [
-        "build/embed/integrations.version$"
+      customType: 'regex',
+      fileMatch: [
+        'build/embed/integrations.version$',
       ],
-      "depNameTemplate": "newrelic/{{{integrationName}}}",
-      "datasourceTemplate": "github-releases", // Version info is fetched from GitHub.
-      "matchStrings": [
-        "(?<integrationName>.+),(?<currentValue>v.+)"
-      ]
+      depNameTemplate: 'newrelic/{{{integrationName}}}',
+      datasourceTemplate: 'github-releases',
+      matchStrings: [
+        '(?<integrationName>.+),(?<currentValue>v.+)',
+      ],
     },
     {
-      "fileMatch": [
-        "distributions/otelcol/manifest.yaml$"
+      customType: 'regex',
+      fileMatch: [
+        'distributions/otelcol/manifest.yaml$',
       ],
-      "datasourceTemplate": "gomod",
-      "matchStrings": [
-        "gomod: (?<depName>.+) (?<currentValue>.+)"
-      ]
-    }
-  ]
+      datasourceTemplate: 'gomod',
+      matchStrings: [
+        'gomod: (?<depName>.+) (?<currentValue>.+)',
+      ],
+    },
+  ],
 }
