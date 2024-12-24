@@ -30,7 +30,7 @@ exporters:
 extensions:
   - gomod: go.opentelemetry.io/collector/extension/zpagesextension v0.66.0
   - gomod: go.opentelemetry.io/collector/extension/ballastextension v0.66.0
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension v0.66.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension v0.116.0
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/pprofextension v0.66.0
 
 processors:
