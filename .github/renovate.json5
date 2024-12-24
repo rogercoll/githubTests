@@ -68,6 +68,7 @@
         'distributions/otelcol/manifest.yaml$',
       ],
       datasourceTemplate: 'go',
+      "groupName": "otelcol",
       matchStrings: [
         'gomod: (?<depName>.+) (?<currentValue>.+)',
       ],
