@@ -67,7 +67,7 @@
       fileMatch: [
         'distributions/otelcol/manifest.yaml$',
       ],
-      datasourceTemplate: 'gomod',
+      datasourceTemplate: 'go',
       matchStrings: [
         'gomod: (?<depName>.+) (?<currentValue>.+)',
       ],
