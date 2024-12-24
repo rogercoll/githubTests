@@ -59,6 +59,15 @@
       "matchStrings": [
         "(?<integrationName>.+),(?<currentValue>v.+)"
       ]
+    },
+    {
+      "fileMatch": [
+        "distributions/**/manifest.yaml$"
+      ],
+      "datasourceTemplate": "gomod",
+      "matchStrings": [
+        "gomod: (?<depName>.+) (?<currentValue>.+)"
+      ]
     }
   ]
 }
