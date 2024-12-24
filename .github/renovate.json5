@@ -70,7 +70,7 @@
     {
       customType: 'regex',
       fileMatch: [
-        'distributions/otelcol/manifest.yaml$',
+        'distributions/**/manifest.yaml$',
       ],
       datasourceTemplate: 'go',
       matchStrings: [
