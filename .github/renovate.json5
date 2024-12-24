@@ -8,6 +8,11 @@
   enabledManagers: [
     'custom.regex',
   ],
+  "packageRules": [{
+    "matchManagers": ["regex"],
+    "matchPackagePatterns": ["open-telemetry"],
+    "groupName": "otelcol"
+  }],
   customManagers: [
     {
       customType: 'regex',
@@ -68,7 +73,6 @@
         'distributions/otelcol/manifest.yaml$',
       ],
       datasourceTemplate: 'go',
-      "groupName": "otelcol",
       matchStrings: [
         'gomod: (?<depName>.+) (?<currentValue>.+)',
       ],
