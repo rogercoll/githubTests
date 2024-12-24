@@ -62,7 +62,7 @@
     },
     {
       "fileMatch": [
-        "distributions/**/manifest.yaml$"
+        "distributions/otelcol/manifest.yaml$"
       ],
       "datasourceTemplate": "gomod",
       "matchStrings": [
