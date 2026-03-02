@@ -5,14 +5,31 @@
   labels: [
     'dependencies',
   ],
+  gomod: {
+    managerFilePatterns: [
+      '/(^|/)tools\\.mod$/',
+    ],
+  },
   enabledManagers: [
     'custom.regex',
   ],
-  "packageRules": [{
+  "packageRules": [
+        {
+      groupName: 'Go dependencies',
+      matchManagers: [
+        'gomod',
+      ],
+      schedule: [
+        'before 8am every weekday',
+      ],
+      automerge: true,
+    },
+    {
     "matchManagers": ["regex"],
     // "matchPackagePatterns": ["open-telemetry"],
     "groupName": "otelcol"
-  }],
+    },
+  ],
   customManagers: [
     {
       customType: 'regex',
