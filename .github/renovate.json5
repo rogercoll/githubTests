@@ -14,15 +14,11 @@
     'custom.regex',
   ],
   "packageRules": [
-        {
+    {
       groupName: 'Go dependencies',
       matchManagers: [
         'gomod',
       ],
-      schedule: [
-        'before 8am every weekday',
-      ],
-      automerge: true,
     },
     {
     "matchManagers": ["regex"],
@@ -71,27 +67,6 @@
       datasourceTemplate: 'docker',
       matchStrings: [
         'base_image=(?<depName>.+):(?<currentValue>.+)',
-      ],
-    },
-    {
-      customType: 'regex',
-      fileMatch: [
-        'build/embed/integrations.version$',
-      ],
-      depNameTemplate: 'newrelic/{{{integrationName}}}',
-      datasourceTemplate: 'github-releases',
-      matchStrings: [
-        '(?<integrationName>.+),(?<currentValue>v.+)',
-      ],
-    },
-    {
-      customType: 'regex',
-      fileMatch: [
-        'distributions/**/manifest.yaml$',
-      ],
-      datasourceTemplate: 'go',
-      matchStrings: [
-        'gomod: (?<depName>.+) (?<currentValue>.+)',
       ],
     },
   ],
