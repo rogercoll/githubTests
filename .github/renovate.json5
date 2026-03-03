@@ -14,7 +14,7 @@
     'custom.regex',
     'gomod',
   ],
-  "packageRules": [
+  packageRules: [
     {
       groupName: 'Go dependencies',
       matchManagers: [
@@ -22,16 +22,17 @@
       ],
     },
     {
-    "matchManagers": ["regex"],
-    // "matchPackagePatterns": ["open-telemetry"],
-    "groupName": "otelcol"
+      matchManagers: [
+        'custom.regex',
+      ],
+      groupName: 'otelcol',
     },
   ],
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: [
-        '.env$',
+      managerFilePatterns: [
+        '/.env$/',
       ],
       datasourceTemplate: 'docker',
       matchStrings: [
@@ -40,8 +41,8 @@
     },
     {
       customType: 'regex',
-      fileMatch: [
-        'build/Dockerfile$',
+      managerFilePatterns: [
+        '/build/Dockerfile$/',
       ],
       datasourceTemplate: 'docker',
       depNameTemplate: 'kubeshop/tracetest',
@@ -51,8 +52,8 @@
     },
     {
       customType: 'regex',
-      fileMatch: [
-        'build/opensearch.yaml$',
+      managerFilePatterns: [
+        '/build/opensearch.yaml$/',
       ],
       datasourceTemplate: 'docker',
       depNameTemplate: 'opensearchproject/opensearch',
@@ -62,8 +63,8 @@
     },
     {
       customType: 'regex',
-      fileMatch: [
-        'build/container/Dockerfile$',
+      managerFilePatterns: [
+        '/build/container/Dockerfile$/',
       ],
       datasourceTemplate: 'docker',
       matchStrings: [
