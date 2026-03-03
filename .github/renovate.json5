@@ -10,10 +10,6 @@
      '/(^|/)tools\\.mod$//',
     ],
   },
-  enabledManagers: [
-    'custom.regex',
-    'gomod',
-  ],
   packageRules: [
     {
       groupName: 'Go dependencies',
