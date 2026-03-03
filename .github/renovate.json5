@@ -7,7 +7,7 @@
   ],
   gomod: {
     managerFilePatterns: [
-      '/(^|/)tools\\.mod$/',
+      'tools.mod',
     ],
   },
   enabledManagers: [
