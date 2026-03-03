@@ -12,6 +12,7 @@
   },
   enabledManagers: [
     'custom.regex',
+    'gomod',
   ],
   "packageRules": [
     {
