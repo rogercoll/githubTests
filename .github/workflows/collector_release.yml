@@ -10,7 +10,7 @@ jobs:
     name: Build otelcol using builder
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - run: ls -al build/
       - uses: rogercoll/otelcol-builder-action@main
         with:
