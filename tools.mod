@@ -1,4 +1,4 @@
-module go.opentelemetry.io/ebpf-profiler
+module github.com/rogercoll/githubtest
 
 go 1.24.0
 
