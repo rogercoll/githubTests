@@ -54,7 +54,7 @@ jobs:
           find ./dist -name '*${{ github.event.inputs.working_version }}*' -exec bash -c ' mv $0 ${0/${{ github.event.inputs.working_version }}/${{ github.event.inputs.new_version }}}' {} \;
           ls -al ./dist
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: | 
             Release-amd64-${{ github.event.inputs.new_version }}.txt
